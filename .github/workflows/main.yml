@@ -17,7 +17,6 @@ jobs:
         uses: docker/build-push-action@v1
         with:
           registry: ghcr.io
-          username: "sandeep540"
-          password: ${{ secrets.GCHR PAT }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
           repository: sandeep540/helloworld
           tags: latest

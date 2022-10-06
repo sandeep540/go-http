@@ -1,1 +1,1 @@
-### Sample
+### Simple Go HTTP Server

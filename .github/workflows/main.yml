@@ -15,14 +15,11 @@ jobs:
         name: "Build:checkout"
         uses: actions/checkout@v2
       -
-        name: Login to DockerHub
-        uses: docker/login-action@v2
-        with:
-          username: "sandeep540"
-          password: ${{ secrets.GITHUB_TOKEN }}
-      -
         name: Build and push
         uses: docker/build-push-action@v3
         with:
+          registry: ghcr.io
+          username: "sandeep540"
+          password: ${{ secrets.GITHUB_TOKEN }}
           push: true
           tags: sandeep540/go-http:latest

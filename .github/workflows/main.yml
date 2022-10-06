@@ -11,12 +11,18 @@ jobs:
     name: 'Build'
     runs-on: ubuntu-latest
     steps:
-      - name: "Build:checkout"
+      - 
+        name: "Build:checkout"
         uses: actions/checkout@v2
-      - name: 'Build:dockerimage'
-        uses: docker/build-push-action@v1
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v2
         with:
-          registry: ghcr.io
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          repository: sandeep540/helloworld
-          tags: latest
+          username: "sandeep540"
+          password: ${{ secrets.GITHUB_TOKEN }}
+      -
+        name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: sandeep540/go-http:latest
